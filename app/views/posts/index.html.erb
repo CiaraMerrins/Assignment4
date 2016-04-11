@@ -1,0 +1,5 @@
+<h1>This is the index</h1>
+<%= @posts.each do |post| %>
+<div class="post_wrapper">
+<h2 class="body"><%=link_to post.body, post %></h2>
+<% end %>

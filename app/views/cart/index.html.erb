@@ -1,0 +1,30 @@
+<h1>Your Cart</h1>
+
+<% if @cart.empty? %>
+<p>Your cart is empty</p>
+<% else %>
+
+<%= link_to 'Empty the cart', cart_clear_path %>
+<% end %>
+<br><br><br>
+
+<% total = 0 %>
+<ul>
+<% @cart.each do | id, title | %>
+	<% pin = Pin.find_by_id(id) %>
+	
+	<li>
+		<i><b>Title:</b></i><p><%= link_to pin.title, pin %></p>
+		<i><b>Author: </b></i><p><%= pin.author %> </p>
+		<b><i>Category: </b></i><p><%= pin.category %> </p>
+		<b><i>Price: </b></i><p><%= number_to_currency(pin.price, :unit => '€') %></p>
+		
+	
+	
+	</li>
+<% total += pin.price %>
+
+
+<% end %>
+<p><b><%= number_to_currency(total, :unit => '€') %></b></p>
+</ul>

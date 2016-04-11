@@ -1,0 +1,24 @@
+<div class="col-md-6 col-md-offset-2">
+<div id="pins" class="transitions-enabled">
+
+ <%= link_to 'Create new Book', new_pin_path , class: "btn btn-default" %>
+
+	<% @pins.each do |pin| %>
+		<div class="box panel panel-default">
+			
+			
+				<h1 class="title"><%= link_to pin.title, pin %></h1>
+<%= image_tag pin.image_filename %>
+			
+<h1 class="Price"><%= pin.price %></h1>
+<a href="/cart/<%= pin.id %>">Add to cart</a>
+
+<h1 class="Author"><%= pin.author %></h1>
+<h1 class="Category"><%= pin.category %></h1>
+<p class="date"><%= pin.created_at.strftime("%B, %d, %Y") %></p>
+
+</div>
+
+
+
+<% end %>
